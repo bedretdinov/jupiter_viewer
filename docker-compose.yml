@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"

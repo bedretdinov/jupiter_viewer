@@ -1,0 +1,12 @@
+
+[Install]
+WantedBy=multi-user.target
+
+
+[Unit]
+Description=webnb
+
+[Service]
+ExecStart=/app/env/bin/python3 /app/main.py
+Restart = always
+StartLimitIntervalSec=120

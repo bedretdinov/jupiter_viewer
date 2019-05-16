@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="py-5 text-center">
+      <div class="container">
+        <h2 class="text-center">Список ноутбуков</h2>
+        <div class="row">
+            <table class="table">
+            {% for item in notebooks %}
+                <tr>
+                    <td><a href="/notebook/{{ item['file'] }}">{{ item['name'] }}</a></td>
+                    <td>{{ item['desc'] }}</td>
+                    <td><a href="{{ item['task'] }}">{{ item['task'] }}</a></td>
+                    <td>{{ item['exec_interval'] }} мин</td>
+                    <td><a href="/notebook/delete/{{ item['file'] }}" class="btn btn-danger">del.</a></td>
+                </tr>
+            {% endfor %}
+            </table>
+
+        </div>
+      </div>
+</section>
+<section class="py-5 text-center">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                          <form method="post" enctype="multipart/form-data" action="/upload_file">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Создать отчет</label>
+                                <input type="text" name=name class="form-control" id="exampleInputEmail1" placeholder="Название">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" name=desc class="form-control" id="exampleInputPassword1" placeholder="Описание">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" name=time class="form-control" id="exampleInputPassword1" placeholder="Интервал обновления в мин">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" name=task class="form-control" id="exampleInputPassword1" placeholder="Ссылука на задачу">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Файл блокнота jupyter</label>
+                                <input type=file name=file   class="form-control" >
+                              </div>
+                              <div class="form-group">
+                                <button type="submit"  class="btn btn-primary pull-right">создать</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</section>
+{% endblock %}
+
+

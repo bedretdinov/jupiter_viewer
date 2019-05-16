@@ -1,0 +1,12 @@
+
+[Install]
+WantedBy=multi-user.target
+
+
+[Unit]
+Description=nbupdater
+
+[Service]
+ExecStart=/app/env/bin/python3 /app/cron.py
+Restart = always
+StartLimitIntervalSec=120
