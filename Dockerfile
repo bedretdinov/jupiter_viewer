@@ -19,7 +19,8 @@ RUN sed -i '/jessie-updates/d' /etc/apt/sources.list \
 &&   pip3 install numpy==1.15.3 \
 &&   pip3 install pandas==0.23.4 \
 &&   pip3 install urllib3==1.22 \
-&&   pip3 install requests==2.18.4
+&&   pip3 install requests==2.18.4 \
+&&   pip3 install peewee
 
 
 COPY . /app

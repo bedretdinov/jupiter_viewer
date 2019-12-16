@@ -1,37 +1,22 @@
-import sqlite3
-import os
+from peewee import *
+
+sqlite_db = SqliteDatabase('data.db', pragmas={'journal_mode': 'wal'})
 
 
-class SqlLite:
+class BaseModel(Model):
+    """A base model that will use our Sqlite database."""
 
-    conn = None
+    class Meta:
+        database = sqlite_db
 
-    def __init__(self):
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        self.conn = sqlite3.connect(BASE_DIR+'/data.db')
-        self.conn.row_factory = sqlite3.Row
 
-    def query(self, sql):
-        c = self.conn.cursor()
-        c.execute(sql)
-        self.conn.commit()
+class Notebooks(BaseModel):
+    name = TextField()
+    desc = TextField()
+    task = TextField()
+    exec_interval = TextField()
+    file = TextField()
+    update_date = TextField()
 
-    def insert(self, sql, params):
-        c = self.conn.cursor()
-        c.execute(sql, params)
-        self.conn.commit()
-
-    def fetch(self, sql):
-        c = self.conn.cursor()
-        c.execute(sql)
-        self.conn.commit()
-
-    def fetchAll(self, sql):
-        c = self.conn.cursor()
-        c.execute(sql)
-        return c.fetchall()
-
-    def fetchOne(self, sql):
-        c = self.conn.cursor()
-        c.execute(sql)
-        return c.fetchone()
+    class Meta:
+        table_name = 'notebooks'

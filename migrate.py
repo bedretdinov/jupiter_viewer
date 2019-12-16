@@ -1,14 +1,5 @@
-from db import SqlLite
+from db import sqlite_db, Notebooks
 
-sql = SqlLite()
-
-sql.query('''
-    DROP TABLE notebooks
-''')
-
-sql.query('''
-    CREATE TABLE notebooks
-             (name text, desc text, task text, exec_interval int, file text, update_date text )
-''')
-
+# Create the tables.
+sqlite_db.create_tables([Notebooks])
 
