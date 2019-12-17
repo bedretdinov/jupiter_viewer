@@ -107,7 +107,10 @@ def update(file):
     UPLOAD_PATH = os.path.dirname(os.path.abspath(__file__)) + '/notebooks/{0}'
     notebook_list = Notebooks.select().where(Notebooks.file == file).execute()
 
+
+
     for item in notebook_list:
+        print(UPLOAD_PATH.format(item.file))
         execNoteboook(UPLOAD_PATH.format(item.file))
         query = (Notebooks.update(
                     update_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")

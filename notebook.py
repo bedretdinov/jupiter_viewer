@@ -8,14 +8,16 @@ from nbconvert.preprocessors import ExecutePreprocessor
 
 def htmlNoteboook(file):
 
+    #execNoteboook(file)
+
     exporter = HTMLExporter(template_file='/app/custom.tpl')
 
     output, resources = exporter.from_filename(file)
 
-    dom = pq(output)
-    dom('.output_stderr, .prompt').remove()
+    #dom = pq(output)
+    #dom('.output_stderr, .prompt').remove()
 
-    return pq(dom).html()
+    return output
 
 
 def execNoteboook(file):
