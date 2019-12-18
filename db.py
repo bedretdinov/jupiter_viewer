@@ -20,3 +20,8 @@ class Notebooks(BaseModel):
 
     class Meta:
         table_name = 'notebooks'
+
+
+
+
+sqlite_db.create_tables([Notebooks])
