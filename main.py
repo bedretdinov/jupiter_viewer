@@ -110,7 +110,7 @@ def update(file):
 
 
     for item in notebook_list:
-        print(UPLOAD_PATH.format(item.file))
+
         execNoteboook(UPLOAD_PATH.format(item.file))
         query = (Notebooks.update(
                     update_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")

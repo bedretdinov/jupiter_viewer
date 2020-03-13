@@ -20,8 +20,10 @@ RUN sed -i '/jessie-updates/d' /etc/apt/sources.list \
 &&   pip3 install pandas==0.23.4 \
 &&   pip3 install urllib3==1.22 \
 &&   pip3 install requests==2.18.4 \
-&&   pip3 install peewee
-
+&&   pip3 install pymysql  \
+&&   pip3 install peewee   \
+&&   pip3 install plotly==4.5.4 \
+&&   pip3 install matplotlib
 
 COPY . /app
 
